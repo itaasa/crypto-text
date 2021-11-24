@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "axios": "^0.24.0",
+    "config": "^3.3.6",
+    "messagemedia-messages-sdk": "^2.0.3",
+    "mongodb": "^4.2.0",
+    "request-promise": "^4.2.6",
+    "twilio": "^3.71.2"
+  }
+}

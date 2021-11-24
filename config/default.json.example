@@ -1,0 +1,10 @@
+{
+    "coinMarketApiKey": "",
+    "twilioAccountSid": "",
+    "twilioAuthToken": "",
+    "twilioMessageServiceId": "",
+    "myPhoneNumber": "",
+    "mongoUsername": "",
+    "mongoPassword": "",
+    "mongoClusterUrl": ""
+}
