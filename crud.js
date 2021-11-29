@@ -47,31 +47,4 @@ async function findLastEnteredPriceByName(client, nameOfCoin){
     }
 }
 
-async function getAllEnabledUsers(client){
-    const cursor = client.db("crypto_text").collection("users").find(
-        {
-            is_enabled: true
-        }
-    );
-
-    const results = await cursor.toArray();
-
-    if (results){
-        console.log('Found the following enabled users: ');
-        console.log(results);
-
-        getAllEnabledPhoneNumbers(results);
-        return results;
-    }
-}
-
-function getAllEnabledPhoneNumbers(users){
-    var phoneNumbers = [];
-    users.forEach(element => {
-        phoneNumbers.push(element.phone_number);
-    });
-
-    console.log(phoneNumbers);
-}
-
 main().catch(console.error);

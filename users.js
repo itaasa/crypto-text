@@ -3,7 +3,6 @@ var DbConnection = require('./cryptoTextDb');
 async function getAllEnabledUsers() {
     try {
         let db = await DbConnection.Get();
-        console.log(db);
         let cursor = db.collection('users').find(
             {
                 isEnabled: true
@@ -12,8 +11,6 @@ async function getAllEnabledUsers() {
 
         const results = await cursor.toArray();
         if (results) {
-            console.log('Found the following enabled users: ');
-            console.log(results);
             return results;
         }
     } catch (e) {
@@ -21,9 +18,21 @@ async function getAllEnabledUsers() {
     }
 }
 
+async function getAllEnabledPhoneNumbers(){
+    var enabledUsers = await getAllEnabledUsers();
+    var phoneNumbers = [];
+    
+    enabledUsers.forEach(element => {
+        phoneNumbers.push(element.phoneNumber);
+    });
+    
+    return phoneNumbers;
+}
+
 // Just using the below for testing
 async function main() {
-    var myUsers = getAllEnabledUsers();
+    var enabledPhoneNumbers = await getAllEnabledPhoneNumbers();
+    console.log(enabledPhoneNumbers);
 }
 
 main();
