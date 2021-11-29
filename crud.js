@@ -10,8 +10,11 @@ async function main(){
         // Connect to the MongoDB cluster
         await client.connect();
 
-        //Test queries here
-        await getAllEnabledUsers(client);
+        // Test queries here
+        // await getAllEnabledUsers(client);
+        // For the  ISO date, it is new Date().toISOString()
+        await findLastEnteredPriceByName(client, "CRO");
+
     } catch (e) {
         console.error(e);
     } finally {
@@ -35,6 +38,10 @@ async function findLastEnteredPriceByName(client, nameOfCoin){
     const results = await cursor.toArray();
 
     if (results){
+
+        var date = new Date(results.dateAdded);
+        console.log(date.getFullYear());
+        
         console.log(`Found last pricing listing in the collection with the name '${nameOfCoin}':`);
         console.log(results);
     }
