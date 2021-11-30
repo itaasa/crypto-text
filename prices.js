@@ -2,6 +2,12 @@ var DbConnection = require('./cryptoTextDb');
 
 const PRICES_TABLE_NAME = 'prices';
 
+function Price(name, price){
+    this.name = name;
+    this.price = price;
+    this.dateAdded = new Date().toISOString();
+}
+
 async function insertPrice(price) {
     try {
         let db = await DbConnection.Get();
@@ -34,14 +40,8 @@ async function findLastEnteredPriceByName(nameOfCoin){
 
 // Just using the below for testing
 async function main() {
-    // var price = {
-    //     name: "BTC",
-    //     price: 57411.52006252317,
-    //     dateAdded: new Date().toISOString()
-    // }
-    // await insertPrice(price);
-
-    await findLastEnteredPriceByName("BTC");
+    var price = new Price('ETH', 4476.932396503743);
+    await insertPrice(price);
 }
 
 main();
