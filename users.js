@@ -1,9 +1,11 @@
 var DbConnection = require('./cryptoTextDb');
 
+const USERS_TABLE_NAME = 'users';
+
 async function getAllEnabledUsers() {
     try {
         let db = await DbConnection.Get();
-        let cursor = db.collection('users').find(
+        let cursor = db.collection(USERS_TABLE_NAME).find(
             {
                 isEnabled: true
             }
